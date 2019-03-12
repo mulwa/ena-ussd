@@ -7,11 +7,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get('*', (req, res)=>{
-    res.send('Ussd App running')
-});
-app.post('*',(req,res)=>{
-    let {SESSION_ID, SERVICE_CODE, MSISDN, USSD_STRING } = req.body;
+// app.get('*', (req, res)=>{
+//     res.send('Ussd App running')
+// });
+app.get('*',(req,res)=>{
+    let {SESSION_ID, SERVICE_CODE, MSISDN, USSD_STRING } = req.query;    
     // initial request
     if(USSD_STRING == ''){
         let response = `CON Please Select Service ${SESSION_ID} ${SERVICE_CODE} ${MSISDN}
