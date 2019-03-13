@@ -11,13 +11,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 //     res.send('Ussd App running')
 // });
 app.get('*',(req,res)=>{
-    // let {SESSION_ID, SERVICE_CODE, MSISDN, USSD_STRING } = req.query; 
+    let {SESSION_ID, SERVICE_CODE, MSISDN, USSD_STRING } = req.query; 
 
-    let {SESSION_ID,SERVICE_CODE,USSD_STRING } = req.query; 
+    // let {SESSION_ID,SERVICE_CODE,USSD_STRING } = req.query; 
     console.log(req.query)   
     // initial request
     if(USSD_STRING == ''){
-        let response = `CON Please Select Service ${SESSION_ID} ${SERVICE_CODE} 
+        let response = `CON Please Select Service ${SESSION_ID} ${SERVICE_CODE} ${MSISDN} 
         1. Buy Ticket
         2. My Tickets
         3. Payments`
